@@ -1,6 +1,6 @@
 {
   "name": "react-native-keyboard-utils",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Simple components for common use cases with keyboard",
   "main": "keyboardUtils.js",
   "scripts": {
