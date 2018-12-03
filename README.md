@@ -1,4 +1,4 @@
-### react-native-keyboard-utils
+## react-native-keyboard-utils
 
 This is a simple package that offers some useful utility components related to keyboard.
 
@@ -8,17 +8,17 @@ This is a simple package that offers some useful utility components related to k
 
 ### Usage
 
-`import { HideWithKeyboard, ShowWithKeyboard, KeyboardListener } from 'react-native-keyboard-utils';`
+`import { HideWithKeyboard, ShowWithKeyboard, KeyboardListener, withKeyboardState } from 'react-native-keyboard-utils';`
 
-#### ShowWithKeyboard
+#### `ShowWithKeyboard`
 
 Use this component to render content when keyboard is shown.
 
-#### HideWithKeyboard
+#### `HideWithKeyboard`
 
 Use this component to hide content when keyboard is shown.
 
-### KeyboardListener
+### `KeyboardListener`
 
 NOTE the docs is slightly incomplete atm, see the source code of KeyboardListener for full info.
 
@@ -32,6 +32,10 @@ supported props:
 - `onDidHide()`
 - `onWillChangeFrame()`
 - `onDidChangeFrame()`
+
+### `withKeyboardState`
+
+A HOC that will pass a `isKeyboardShown` prop to the wrapped component. You can use it to react to keyboard state, eg: `const YourComponentThatReactsToKeyboard = withKeyboardState(YourComponent);`. `ShowWithKeyboard` and `HideWithKeyboard` are implemented using this HOC.
 
 ### Example
 

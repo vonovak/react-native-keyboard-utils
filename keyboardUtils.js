@@ -1,2 +1,2 @@
-export { HideWithKeyboard, ShowWithKeyboard } from './HOCs';
+export { HideWithKeyboard, ShowWithKeyboard, withKeyboardState } from './HOCs';
 export { KeyboardListener } from './KeyboardListener';
