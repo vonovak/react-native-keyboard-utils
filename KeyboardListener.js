@@ -17,12 +17,14 @@ export class KeyboardListener extends Component {
     eventNames.forEach(eventName => {
       const propName = `on${eventName}`;
       const passedListener = this.props[propName];
-      passedListener && this.registerListener(passedListener, eventName);
+      this.registerListenerIfDefined(passedListener, eventName);
     });
   }
 
-  registerListener(listenerFromProps, eventName) {
-    this.subscribers[eventName] = Keyboard.addListener(`keyboard${eventName}`, listenerFromProps);
+  registerListenerIfDefined(listenerFromProps, eventName) {
+    if (listenerFromProps) {
+      this.subscribers[eventName] = Keyboard.addListener(`keyboard${eventName}`, listenerFromProps);
+    }
   }
 
   componentWillUnmount() {
@@ -44,7 +46,7 @@ export class KeyboardListener extends Component {
 
       if (oldListener !== newListener) {
         this.removeListener(eventName);
-        newListener && this.registerListener(newListener, eventName);
+        this.registerListenerIfDefined(newListener, eventName);
       }
     });
   }
