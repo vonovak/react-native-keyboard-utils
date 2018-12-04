@@ -20,7 +20,7 @@ Use this component to render content when keyboard is shown.
 
 Use this component to hide content when keyboard is shown.
 
-### `KeyboardListener`
+#### `KeyboardListener`
 
 Use this component to register for keyboard events. The component handles event registration and cleanup for you.
 
@@ -33,7 +33,7 @@ Supported props are the following callbacks which will be called when the corres
 - `onWillChangeFrame`
 - `onDidChangeFrame`
 
-### `withKeyboardState`
+#### `withKeyboardState`
 
 A HOC that will pass a `isKeyboardShown` prop to the wrapped component. You can use it to react to keyboard state, eg: `const YourComponentThatReactsToKeyboard = withKeyboardState(YourComponent);`. `ShowWithKeyboard` and `HideWithKeyboard` are implemented using this HOC.
 
