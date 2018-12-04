@@ -94,3 +94,7 @@ const styles = StyleSheet.create({
   },
 });
 ```
+
+### License
+
+MIT
