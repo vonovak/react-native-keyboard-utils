@@ -10,6 +10,8 @@ This is a simple package that offers some useful utility components related to k
 
 `import { HideWithKeyboard, ShowWithKeyboard, KeyboardListener, withKeyboardState } from 'react-native-keyboard-utils';`
 
+See example at the bottom.
+
 #### `ShowWithKeyboard`
 
 Use this component to render content when keyboard is shown.
@@ -20,22 +22,35 @@ Use this component to hide content when keyboard is shown.
 
 ### `KeyboardListener`
 
-NOTE the docs is slightly incomplete atm, see the source code of KeyboardListener for full info.
-
 Use this component to register for keyboard events. The component handles event registration and cleanup for you.
 
-supported props:
+Supported props are the following callbacks which will be called when the corresponding event happens:
 
-- `onWillShow()`
-- `onWillHide()`
-- `onDidShow()`
-- `onDidHide()`
-- `onWillChangeFrame()`
-- `onDidChangeFrame()`
+- `onWillShow`
+- `onWillHide`
+- `onDidShow`
+- `onDidHide`
+- `onWillChangeFrame`
+- `onDidChangeFrame`
 
 ### `withKeyboardState`
 
 A HOC that will pass a `isKeyboardShown` prop to the wrapped component. You can use it to react to keyboard state, eg: `const YourComponentThatReactsToKeyboard = withKeyboardState(YourComponent);`. `ShowWithKeyboard` and `HideWithKeyboard` are implemented using this HOC.
+
+It accepts two props of type string: `keyboardShownEvent` and `keyboardHiddenEvent`, which are the names of events that the component will consider as "shown event" and "hidden event". By default, those values are (keep in mind `keyboardWill*` events are not supported on android):
+
+```js
+ios: {
+  keyboardShownEvent: 'keyboardWillShow',
+  keyboardHiddenEvent: 'keyboardWillHide',
+},
+android: {
+  keyboardShownEvent: 'keyboardDidShow',
+  keyboardHiddenEvent: 'keyboardDidHide',
+},
+```
+
+The HOC forwards the `ref` to the wrapped component.
 
 ### Example
 
@@ -55,7 +70,7 @@ export default class App extends React.Component {
           onChangeText={text => this.setState({ text })}
         />
         <KeyboardListener
-          onDidShow={() => {
+          onDidShow={event => {
             // do something
           }}
         />
