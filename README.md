@@ -2,6 +2,8 @@
 
 This is a simple package that offers some useful utility components related to keyboard.
 
+Please note this is an experiment.
+
 ### Installation
 
 `yarn add react-native-keyboard-utils`
